@@ -43,7 +43,7 @@ Debemos tener instaladas las siguientes bibliotecas:
 
 **🚀 Instrucciones de Ejecución**
 
-**1. Montar Google Drive (para usar los datos en Google Colab)**
+**1. Montamos Google Drive (para usar los datos en Google Colab)**
 
 ```python
 from google.colab import drive
