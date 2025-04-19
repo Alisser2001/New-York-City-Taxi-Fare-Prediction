@@ -48,12 +48,14 @@ Debemos tener instaladas las siguientes bibliotecas:
 ```python
 from google.colab import drive
 
-drive.mount('/content/drive')```
+drive.mount('/content/drive')
+```
 
 Debes colocar la ruta donde este el archivo train2.csv  en el notebook:
 
 ```python
-/content/drive/MyDrive/.../train2.csv```
+/content/drive/MyDrive/.../train2.csv
+```
 
 **2. Cargar y Preprocesar los Datos**
 
@@ -109,12 +111,14 @@ model = xgb.XGBRegressor(
 ```python
 import joblib
 modelo_entrenado = model.fit(X_train, y_train)
-joblib.dump(modelo_entrenado, 'modelo_taxi.pkl')```
+joblib.dump(modelo_entrenado, 'modelo_taxi.pkl')
+```
 
 - Cargamos el modelo guardado:
 
 ```python
-modelo_cargado = joblib.load('modelo_taxi.pkl')```
+modelo_cargado = joblib.load('modelo_taxi.pkl')
+```
 
 **📊 Resultados**
 
