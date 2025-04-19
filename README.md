@@ -28,11 +28,11 @@ Raúl Ramos Pollán
 
 ├── **test.csv**
 
-├──** README.md**
+├──**README.md**
 
-- **modelo\_xgboost.ipynb: **Notebook principal con todo el flujo del proyecto.
+- **modelo\_xgboost.ipynb:** Notebook principal con todo el flujo del proyecto.
 - **train2.csv:** Subconjunto del conjunto de entrenamiento original.
-- **test.csv: **Conjunto de datos de prueba proporcionado por Kaggle.
+- **test.csv** Conjunto de datos de prueba proporcionado por Kaggle.
 - **README.md:** Este archivo con instrucciones detalladas.
 
 **🛠️ Requisitos**
