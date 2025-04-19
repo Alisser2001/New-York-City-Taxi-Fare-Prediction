@@ -3,7 +3,7 @@
 
 **📘 Descripción**
 
-Este proyecto fue desarrollado por  forma parte de la materia **Modelos y Simulación de Sistemas I** - Ingenieria de Sistemas - Universidad de Antioquia. El objetivo es predecir la tarifa de viajes en taxi en la ciudad de Nueva York utilizando técnicas de aprendizaje automático, específicamente el algoritmo **XGBoost**.
+Este proyecto se desarrollado para la materia **Modelos y Simulación de Sistemas I** - Ingenieria de Sistemas - Universidad de Antioquia. El objetivo es predecir la tarifa de viajes en taxi en la ciudad de Nueva York utilizando técnicas de aprendizaje automático, específicamente el algoritmo **XGBoost**.
 
 La competencia seleccionada es:
 
