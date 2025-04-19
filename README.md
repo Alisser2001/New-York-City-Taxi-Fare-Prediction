@@ -128,7 +128,7 @@ modelo_cargado = joblib.load('modelo_taxi.pkl')
 
 **🙌 Créditos**
 
-Este proyecto se basa en la solución desarrollada por [rrkcoder en Kaggle](https://www.kaggle.com/code/rrkcoder/xgboost/notebook). A partir de su trabajo, se realizaron adaptaciones y mejoras, incluyendo la implementación de widgets interactivos para facilitar la entrada de datos y la generación de predicciones personalizadas.
+Este proyecto se basa en la solución desarrollada por [rrkcoder en Kaggle](https://www.kaggle.com/code/rrkcoder/xgboost/notebook). A partir de su trabajo, realizamos adaptaciones y mejoras, incluimos la implementación de widgets interactivos para facilitar la entrada de datos y la generación de predicciones personalizadas.
 
 **📌 Notas Adicionales**
 
