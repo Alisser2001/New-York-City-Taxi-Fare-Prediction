@@ -11,9 +11,9 @@ La competencia seleccionada es:
 
 **👥 Autores**
 
-- Alexander Valencia Delgado
+- Alexander Valencia Delgado - alexander.valenciad@udea.edu.co
 
-- Esteven Carmona
+- Juan Esteven Carmona Muñoz - estiven.carmona@udea.edu.co
 
 **Docente:** 
 
