@@ -24,7 +24,7 @@ Raúl Ramos Pollán
 
 ├── **modelo\_xgboost.ipynb**
 
-├── **train2.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
+├── **train.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
 
 ├──**README.md**
 
@@ -41,7 +41,13 @@ Debemos tener instaladas las siguientes bibliotecas:
 
 **🚀 Instrucciones de Ejecución**
 
-**1. Cargamos el archivo train.csv**
+**1. Descargamos train.cvs y test.cvs de la plataforma kaggle** [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
+
+**2. Descargamos Modelo_XGBoost.ipynb** [Modelo_XGBoost.ipynb](https://github.com/alexvadelgado/New-York-City-Taxi-Fare-Prediction/blob/main/Fase%201/Modelo_XGBoost.ipynb "Modelo_XGBoost.ipynb")
+
+**3. Cargamos Modelo_XGBoost.ipynb en el drive de google y lo ejecutamos**
+
+**4. Cargamos el archivo train.csv**
 
 ```python
 from google.colab import files
@@ -52,7 +58,7 @@ train_df = pd.read_csv('train.csv')
 Debes colocar la ruta donde este el archivo train.csv  en el pc:
 
 
-**2. Cargar y Preprocesar los Datos**
+**5. Cargar y Preprocesar los Datos**
 
 - Cargamos el archivo train.csv.
 - Eliminamos valores nulos.
@@ -60,7 +66,7 @@ Debes colocar la ruta donde este el archivo train.csv  en el pc:
 - Calculamos la distancia del viaje utilizando la fórmula de **Haversine**.
 - Extraemos características temporales: hora y día de la semana.
 
-**3. Entrenar el Modelo**
+**6. Entrenar el Modelo**
 
 - Dividimos los datos en conjuntos de entrenamiento y validación (80/20).
 - Entrenamos un modelo XGBRegressor con los siguientes hiperparámetros:
@@ -79,19 +85,19 @@ model = xgb.XGBRegressor(
 
 - Evaluamos el modelo utilizando RMSE.
 
-**4. Generar Predicciones**
+**7. Generar Predicciones**
 
 - Cargamos test.csv.
 - Aplicamos el mismo preprocesamiento que al conjunto de entrenamiento.
 - Realizamos predicciones con el modelo entrenado.
 - Guardamos las predicciones en submission.csv con las columnas key y fare_amount.
 
-**5. Visualizar Resultados**
+**8. Visualizar Resultados**
 
 - Graficamos las predicciones frente a los valores reales del conjunto de validación.
 - Mostramos la importancia de las características utilizando xgb.plot_importance(model).
 
-**6. Interfaz Interactiva**
+**9. Interfaz Interactiva**
 
 - Utilizamos ipywidgets para crear una interfaz que permita ingresar:
   - Distancia del viaje (trip\_distance)
@@ -99,7 +105,7 @@ model = xgb.XGBRegressor(
   - Número de pasajeros (passenger\_count)
 - Al hacer clic en el botón "Predecir", se mostrará la tarifa estimada.
 
-**7. Guardar y Cargar el Modelo**
+**10. Guardar y Cargar el Modelo**
 
 - Guardamos el modelo entrenado:
 
