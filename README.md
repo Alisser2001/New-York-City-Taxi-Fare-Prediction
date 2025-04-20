@@ -24,9 +24,7 @@ Raúl Ramos Pollán
 
 ├── **modelo\_xgboost.ipynb**
 
-├── **train2.csv**
-
-├── **test.csv**
+├── **train2.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
 
 ├──**README.md**
 
@@ -43,23 +41,20 @@ Debemos tener instaladas las siguientes bibliotecas:
 
 **🚀 Instrucciones de Ejecución**
 
-**1. Montamos Google Drive (para usar los datos en Google Colab)**
+**1. Cargamos el archivo train.csv**
 
 ```python
-from google.colab import drive
-
-drive.mount('/content/drive')
+from google.colab import files
+uploaded = files.upload()
+train_df = pd.read_csv('train.csv')
 ```
 
-Debes colocar la ruta donde este el archivo train2.csv  en el notebook:
+Debes colocar la ruta donde este el archivo train.csv  en el pc:
 
-```python
-/content/drive/MyDrive/.../train2.csv
-```
 
 **2. Cargar y Preprocesar los Datos**
 
-- Cargamos el archivo train2.csv.
+- Cargamos el archivo train.csv.
 - Eliminamos valores nulos.
 - Filtramos outliers en fare\_amount, coordenadas y passenger\_count.
 - Calculamos la distancia del viaje utilizando la fórmula de **Haversine**.
