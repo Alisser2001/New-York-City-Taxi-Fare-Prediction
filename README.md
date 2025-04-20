@@ -13,7 +13,7 @@ La competencia seleccionada es:
 
 - Alexander Valencia Delgado - alexander.valenciad@udea.edu.co
 
-- Juan Esteven Carmona Muñoz - estiven.carmona@udea.edu.co
+- Juan Estiven Carmona Muñoz - estiven.carmona@udea.edu.co
 
 **Docente:** 
 
