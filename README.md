@@ -39,6 +39,11 @@ Debemos tener instaladas las siguientes bibliotecas:
 
 `pip install pandas numpy scikit-learn xgboost matplotlib ipywidgets joblib`
 
+
+-----
+## **🚖 FASE 1**
+
+
 **🚀 Instrucciones de Ejecución**
 
 **1. Descargamos train.cvs y test.cvs de la plataforma kaggle** [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos Kaggle")
@@ -121,11 +126,17 @@ joblib.dump(modelo_entrenado, 'modelo_taxi.pkl')
 modelo_cargado = joblib.load('modelo_taxi.pkl')
 ```
 
-**📊 Resultados**
+**📊 Resultados FASE 1 **
 
 - **RMSE en validación**: Aproximadamente entre 3.5 y 4.5 USD.
 - **Archivo de predicciones**: submission.csv listo.
 - **Interfaz interactiva**: Permite obtener predicciones personalizadas de tarifas.
+
+
+-----
+## **🚖 FASE 2**
+
+
 
 **🙌 Créditos**
 
