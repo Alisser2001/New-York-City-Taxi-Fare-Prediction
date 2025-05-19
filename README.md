@@ -137,6 +137,110 @@ modelo_cargado = joblib.load('modelo_taxi.pkl')
 ## **🚖 FASE 2**
 
 
+# 🚀 Descripción
+Esta fase del proyecto consiste en el despliegue de un modelo de predicción de tarifas de taxi en la ciudad de Nueva York mediante el uso de contenedores Docker. El contenedor incluye todos los componentes necesarios para:
+
+- Entrenar un nuevo modelo con datos personalizados (`train.py`)
+- Generar predicciones a partir de un archivo CSV (`predict.py`)
+
+## 📁 Estructura del directorio
+
+fase-2/
+├── dockerignore
+├── Dockerfile
+├── model.pkl (opcional, generado al entrenar)
+├── predict.py --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos")
+├── predictions.csv (generado al predecir)
+├── requirements.txt
+├── sample_input.csv
+└── train.py --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos")
+
+
+## ⚙️ Requisitos previos
+
+- Docker instalado
+- Python 3.8+ si se desea ejecutar fuera del contenedor
+
+## 🐳 Construcción de la imagen Docker
+
+Para construir la imagen Docker:
+
+
+    docker build -t nyc-taxi-model.
+
+## ## 🧠 Entrenamiento del modelo
+
+El script `train.py` permite entrenar un modelo de predicción desde un conjunto de datos CSV.
+
+### 🔧 Comando
+
+`docker run --rm -v "$PWD:/app" nyc-taxi-model \\
+    python train.py --data_file data.csv --model_file model.pkl` 
+
+-   `--data_file`: archivo CSV con los datos de entrenamiento (debe contener las columnas necesarias).
+    
+-   `--model_file`: ruta donde se guardará el modelo entrenado.
+    
+-   `--overwrite_model`: (opcional) sobrescribe el modelo si ya existe.
+    
+
+## 🔍 Generación de predicciones
+
+El script `predict.py` permite generar predicciones desde un archivo CSV de entrada.
+
+### 🔧 Comando
+
+`docker run --rm -v "$PWD:/app" nyc-taxi-model \\
+    python predict.py --input_file sample_input.csv --predictions_file predictions.csv --model_file model.pkl` 
+
+-   `--input_file`: archivo CSV con datos de entrada (raw o preprocesados).
+    
+-   `--predictions_file`: archivo CSV donde se guardarán las predicciones.
+    
+-   `--model_file`: archivo `.pkl` del modelo previamente entrenado.
+    
+
+## 🛠️ Comentarios técnicos
+
+### `train.py`
+
+-   Carga datos desde un CSV, limpia valores atípicos y faltantes.
+    
+-   Extrae características relevantes: hora, día de la semana y distancia (usando la fórmula Haversine).
+    
+-   Entrena un modelo `XGBRegressor` de XGBoost.
+    
+-   Guarda el modelo serializado como `.pkl`.
+    
+
+### `predict.py`
+
+-   Permite trabajar con datos crudos (con `pickup_datetime`) o ya procesados (features listas).
+    
+-   Calcula los mismos features que en entrenamiento.
+    
+-   Usa el modelo `.pkl` para hacer predicciones y guarda los resultados en CSV.
+    
+
+## 📝 Comentarios del Dockerfile (explicación de líneas)
+
+Asegúrate de incluir un Dockerfile documentado como este:
+
+    Usar imagen base oficial de Python
+    FROM python:3.10-slim
+    
+    Establecer directorio de trabajo
+    WORKDIR /app
+    
+    Copiar los archivos necesarios al contenedor
+    COPY . /app
+    
+    Instalar dependencias
+    RUN pip install --no-cache-dir -r requirements.txt
+    
+    Comando por defecto (puede ser reemplazado)
+    CMD ["python", "train.py"]`
+
 
 **🙌 Créditos**
 
