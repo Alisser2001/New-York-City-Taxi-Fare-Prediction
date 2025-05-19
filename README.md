@@ -146,13 +146,13 @@ Esta fase del proyecto consiste en el despliegue de un modelo de predicción de 
 
 **📁 Estructura del Directorio**
 
-├── **dockerignore**
+├── **.dockerignore**
 
 ├── **Dockerfile** 
 
 ├── **model.pkl** (opcional, generado al entrenar).
 
-├── **predict.py** --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos").
+├── **predict.py** 
 
 ├── **predictions.csv** (generado al predecir).
 
@@ -160,20 +160,21 @@ Esta fase del proyecto consiste en el despliegue de un modelo de predicción de 
 
 ├── **sample_input.csv.**
 
-├── **train.py** --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos").
+├── **sample_train.csv.** --> Se debe descargar del Drive en [proyecto taxi kaggle](https://drive.google.com/file/d/1yJk6KRHS0agNJWfboiy3ieQrYVuNoPMC/view?usp=sharing).
+
+├── **train.py** 
 
 
 ## ⚙️ Requisitos previos
 
 - Docker instalado
-- Python 3.8+ si se desea ejecutar fuera del contenedor
+- Python 3.8+ 
 
 ## 🐳 Construcción de la imagen Docker
 
 Para construir la imagen Docker:
 
-
-    docker build -t nyc-taxi-model.
+    docker build -t nyc-taxi-model .
 
 ## 🧠 Entrenamiento del modelo
 
@@ -181,14 +182,13 @@ El script `train.py` permite entrenar un modelo de predicción desde un conjunto
 
 ### 🔧 Comando
 
-`docker run --rm -v "$PWD:/app" nyc-taxi-model \\
-    python train.py --data_file data.csv --model_file model.pkl` 
+`docker run --rm -v $(pwd):/app nyc-taxi-model python train.py --data_file sample_train.csv --model_file model.pkl --overwrite_model` 
 
 -   `--data_file`: archivo CSV con los datos de entrenamiento (debe contener las columnas necesarias).
     
 -   `--model_file`: ruta donde se guardará el modelo entrenado.
     
--   `--overwrite_model`: (opcional) sobrescribe el modelo si ya existe.
+-   `--overwrite_model`: sobrescribe el modelo si ya existe.
     
 
 ## 🔍 Generación de predicciones
@@ -197,10 +197,9 @@ El script `predict.py` permite generar predicciones desde un archivo CSV de entr
 
 ### 🔧 Comando
 
-`docker run --rm -v "$PWD:/app" nyc-taxi-model \\
-    python predict.py --input_file sample_input.csv --predictions_file predictions.csv --model_file model.pkl` 
+`docker run --rm -v $(pwd):/app nyc-taxi-model python predict.py --input_file sample_input.csv --model_file model.pkl --predictions_file predictions.csv` 
 
--   `--input_file`: archivo CSV con datos de entrada (raw o preprocesados).
+-   `--input_file`: archivo CSV con datos de entrada.
     
 -   `--predictions_file`: archivo CSV donde se guardarán las predicciones.
     
@@ -229,26 +228,6 @@ El script `predict.py` permite generar predicciones desde un archivo CSV de entr
 -   Usa el modelo `.pkl` para hacer predicciones y guarda los resultados en CSV.
     
 
-## 📝 Comentarios del Dockerfile (explicación de líneas)
-
-Asegúrate de incluir un Dockerfile documentado como este:
-
-    Usar imagen base oficial de Python
-    FROM python:3.10-slim
-    
-    Establecer directorio de trabajo
-    WORKDIR /app
-    
-    Copiar los archivos necesarios al contenedor
-    COPY . /app
-    
-    Instalar dependencias
-    RUN pip install --no-cache-dir -r requirements.txt
-    
-    Comando por defecto (puede ser reemplazado)
-    CMD ["python", "train.py"]`
-
-
 **🙌 Créditos**
 
 Este proyecto se basa en la solución desarrollada por [rrkcoder en Kaggle](https://www.kaggle.com/code/rrkcoder/xgboost/notebook). A partir de su trabajo, realizamos adaptaciones y mejoras, incluimos la implementación de widgets interactivos para facilitar la entrada de datos y la generación de predicciones personalizadas.
@@ -256,7 +235,7 @@ Este proyecto se basa en la solución desarrollada por [rrkcoder en Kaggle](http
 **📌 Notas Adicionales**
 
 - Asegúrarnos de seguir los pasos en el orden indicado para evitar errores.
-- Debemos verificar que los archivos train.csv y test.csv estén en las rutas correctas.
+- Debemos verificar que los archivos train.csv, sample_train.csv y test.csv estén en las rutas correctas.
 - Si encuentras algún problema o tienes preguntas, no dudes en consultarnos.
 -----
 
