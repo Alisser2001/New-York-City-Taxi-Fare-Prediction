@@ -143,17 +143,23 @@ Esta fase del proyecto consiste en el despliegue de un modelo de predicción de 
 - Entrenar un nuevo modelo con datos personalizados (`train.py`)
 - Generar predicciones a partir de un archivo CSV (`predict.py`)
 
-## 📁 Estructura del directorio
+**📁 Estructura del Directorio**
 
-fase-2/
-├── dockerignore
-├── Dockerfile
-├── model.pkl (opcional, generado al entrenar)
-├── predict.py --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos")
-├── predictions.csv (generado al predecir)
-├── requirements.txt
-├── sample_input.csv
-└── train.py --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos")
+├── **dockerignore**
+
+├── **Dockerfile** 
+
+├── **model.pkl** (opcional, generado al entrenar).
+
+├── **predict.py** --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos").
+
+├── **predictions.csv** (generado al predecir).
+
+├── **requirements.txt.**
+
+├── **sample_input.csv.**
+
+├── **train.py** --> Se debe descargar del Drive en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos").
 
 
 ## ⚙️ Requisitos previos
@@ -168,7 +174,7 @@ Para construir la imagen Docker:
 
     docker build -t nyc-taxi-model.
 
-## ## 🧠 Entrenamiento del modelo
+## 🧠 Entrenamiento del modelo
 
 El script `train.py` permite entrenar un modelo de predicción desde un conjunto de datos CSV.
 
@@ -249,7 +255,7 @@ Este proyecto se basa en la solución desarrollada por [rrkcoder en Kaggle](http
 **📌 Notas Adicionales**
 
 - Asegúrarnos de seguir los pasos en el orden indicado para evitar errores.
-- Debemos verificar que los archivos train2.csv y test.csv estén en las rutas correctas.
+- Debemos verificar que los archivos train.csv y test.csv estén en las rutas correctas.
 - Si encuentras algún problema o tienes preguntas, no dudes en consultarnos.
 -----
 
