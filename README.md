@@ -24,7 +24,7 @@ Raúl Ramos Pollán
 
 ├── **modelo\_xgboost.ipynb**
 
-├── **train.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
+├── **train.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos")
 
 ├──**README.md**
 
@@ -41,7 +41,7 @@ Debemos tener instaladas las siguientes bibliotecas:
 
 **🚀 Instrucciones de Ejecución**
 
-**1. Descargamos train.cvs y test.cvs de la plataforma kaggle** [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
+**1. Descargamos train.cvs y test.cvs de la plataforma kaggle** [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos Kaggle")
 
 **2. Descargamos Modelo_XGBoost.ipynb** [Modelo_XGBoost.ipynb](https://github.com/alexvadelgado/New-York-City-Taxi-Fare-Prediction/blob/main/Fase%201/Modelo_XGBoost.ipynb "Modelo_XGBoost.ipynb")
 
