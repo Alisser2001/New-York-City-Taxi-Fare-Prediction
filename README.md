@@ -172,7 +172,7 @@ Esta fase del proyecto consiste en el despliegue de un modelo de predicción de 
 
 ## 🐳 Construcción de la imagen Docker
 
-Para construir la imagen Docker:
+Para construir la imagen Docker (desde el directorio fase-2):
 
     docker build -t nyc-taxi-model .
 
