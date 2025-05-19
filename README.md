@@ -137,7 +137,8 @@ modelo_cargado = joblib.load('modelo_taxi.pkl')
 ## **🚖 FASE 2**
 
 
-# 🚀 Descripción
+**🚀 Descripción**
+
 Esta fase del proyecto consiste en el despliegue de un modelo de predicción de tarifas de taxi en la ciudad de Nueva York mediante el uso de contenedores Docker. El contenedor incluye todos los componentes necesarios para:
 
 - Entrenar un nuevo modelo con datos personalizados (`train.py`)
