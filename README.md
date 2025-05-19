@@ -156,11 +156,11 @@ Esta fase del proyecto consiste en el despliegue de un modelo de predicción de 
 
 ├── **predictions.csv** (generado al predecir).
 
-├── **requirements.txt.**
+├── **requirements.txt**
 
-├── **sample_input.csv.**
+├── **sample_input.csv**
 
-├── **sample_train.csv.** --> Se debe descargar del Drive en [proyecto taxi kaggle](https://drive.google.com/file/d/1yJk6KRHS0agNJWfboiy3ieQrYVuNoPMC/view?usp=sharing).
+├── **sample_train.csv** --> Se debe descargar del Drive en [proyecto taxi kaggle](https://drive.google.com/file/d/1yJk6KRHS0agNJWfboiy3ieQrYVuNoPMC/view?usp=sharing).
 
 ├── **train.py** 
 
