@@ -24,7 +24,7 @@ Raúl Ramos Pollán
 
 ├── **modelo\_xgboost.ipynb**
 
-├── **train.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
+├── **train.csv y test.csv** Se deben descargar de Kaggle en [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos")
 
 ├──**README.md**
 
@@ -39,9 +39,14 @@ Debemos tener instaladas las siguientes bibliotecas:
 
 `pip install pandas numpy scikit-learn xgboost matplotlib ipywidgets joblib`
 
+
+-----
+## **🚖 FASE 1**
+
+
 **🚀 Instrucciones de Ejecución**
 
-**1. Descargamos train.cvs y test.cvs de la plataforma kaggle** [Datos Kaggle](https://www.kaggle.com/competitions/new-york-city-taxi-fare-prediction/data "Datos Kaggle")
+**1. Descargamos train.cvs y test.cvs de la plataforma kaggle** [Datos Kaggle](https://drive.google.com/drive/folders/1v9n0fnIAC4OZ1sdhGYZ29yM8gs8aMovB?usp=sharing "Datos Kaggle")
 
 **2. Descargamos Modelo_XGBoost.ipynb** [Modelo_XGBoost.ipynb](https://github.com/alexvadelgado/New-York-City-Taxi-Fare-Prediction/blob/main/Fase%201/Modelo_XGBoost.ipynb "Modelo_XGBoost.ipynb")
 
@@ -121,11 +126,107 @@ joblib.dump(modelo_entrenado, 'modelo_taxi.pkl')
 modelo_cargado = joblib.load('modelo_taxi.pkl')
 ```
 
-**📊 Resultados**
+**📊 Resultados FASE 1 **
 
 - **RMSE en validación**: Aproximadamente entre 3.5 y 4.5 USD.
 - **Archivo de predicciones**: submission.csv listo.
 - **Interfaz interactiva**: Permite obtener predicciones personalizadas de tarifas.
+
+
+-----
+## **🚖 FASE 2**
+
+
+**🚀 Descripción**
+
+Esta fase del proyecto consiste en el despliegue de un modelo de predicción de tarifas de taxi en la ciudad de Nueva York mediante el uso de contenedores Docker. El contenedor incluye todos los componentes necesarios para:
+
+- Entrenar un nuevo modelo con datos personalizados (`train.py`)
+- Generar predicciones a partir de un archivo CSV (`predict.py`)
+
+**📁 Estructura del Directorio**
+
+├── **.dockerignore**
+
+├── **Dockerfile** 
+
+├── **model.pkl** (opcional, generado al entrenar).
+
+├── **predict.py** 
+
+├── **predictions.csv** (generado al predecir).
+
+├── **requirements.txt**
+
+├── **sample_input.csv**
+
+├── **sample_train.csv** --> Se debe descargar del Drive en [proyecto taxi kaggle](https://drive.google.com/file/d/1yJk6KRHS0agNJWfboiy3ieQrYVuNoPMC/view?usp=sharing).
+
+├── **train.py** 
+
+
+## ⚙️ Requisitos previos
+
+- Docker instalado
+- Python 3.8+ 
+
+## 🐳 Construcción de la imagen Docker
+
+Para construir la imagen Docker (desde el directorio fase-2):
+
+    docker build -t nyc-taxi-model .
+
+## 🧠 Entrenamiento del modelo
+
+El script `train.py` permite entrenar un modelo de predicción desde un conjunto de datos CSV.
+
+### 🔧 Comando
+
+`docker run --rm -v $(pwd):/app nyc-taxi-model python train.py --data_file sample_train.csv --model_file model.pkl --overwrite_model` 
+
+-   `--data_file`: archivo CSV con los datos de entrenamiento (debe contener las columnas necesarias).
+    
+-   `--model_file`: ruta donde se guardará el modelo entrenado.
+    
+-   `--overwrite_model`: sobrescribe el modelo si ya existe.
+    
+
+## 🔍 Generación de predicciones
+
+El script `predict.py` permite generar predicciones desde un archivo CSV de entrada.
+
+### 🔧 Comando
+
+`docker run --rm -v $(pwd):/app nyc-taxi-model python predict.py --input_file sample_input.csv --model_file model.pkl --predictions_file predictions.csv` 
+
+-   `--input_file`: archivo CSV con datos de entrada.
+    
+-   `--predictions_file`: archivo CSV donde se guardarán las predicciones.
+    
+-   `--model_file`: archivo `.pkl` del modelo previamente entrenado.
+    
+
+## 🛠️ Comentarios técnicos
+
+### `train.py`
+
+-   Carga datos desde un CSV, limpia valores atípicos y faltantes.
+    
+-   Extrae características relevantes: hora, día de la semana y distancia (usando la fórmula Haversine).
+    
+-   Entrena un modelo `XGBRegressor` de XGBoost.
+    
+-   Guarda el modelo serializado como `.pkl`.
+    
+
+### `predict.py`
+
+-   Permite trabajar con datos crudos (con `pickup_datetime`) o ya procesados (features listas).
+    
+-   Calcula los mismos features que en entrenamiento.
+    
+-   Usa el modelo `.pkl` para hacer predicciones y guarda los resultados en CSV.
+    
 
 **🙌 Créditos**
 
@@ -134,7 +235,7 @@ Este proyecto se basa en la solución desarrollada por [rrkcoder en Kaggle](http
 **📌 Notas Adicionales**
 
 - Asegúrarnos de seguir los pasos en el orden indicado para evitar errores.
-- Debemos verificar que los archivos train2.csv y test.csv estén en las rutas correctas.
+- Debemos verificar que los archivos train.csv, sample_train.csv y test.csv estén en las rutas correctas.
 - Si encuentras algún problema o tienes preguntas, no dudes en consultarnos.
 -----
 
