@@ -51,7 +51,7 @@ def main():
         df['dropoff_longitude'], df['dropoff_latitude']
     )
 
-    # Definir X e y
+    # Definir X y Y
     feature_cols = ['trip_distance', 'hour', 'weekday', 'passenger_count']
     logger.info(f"Usando features: {feature_cols}")
     X = df[feature_cols]
@@ -74,7 +74,7 @@ def main():
     )
     model.fit(X_train, y_train)
 
-    # Evaluación en entrenamiento (opcional)
+    # Evaluación en entrenamiento 
     score = model.score(X_train, y_train)
     logger.info(f"Score en entrenamiento: {score:.3f}")
 
