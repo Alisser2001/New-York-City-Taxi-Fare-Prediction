@@ -11,31 +11,23 @@ def predict(
     passenger_count: int,
     model_file: str = "model.pkl"
 ) -> float:
-    try:
-        logger.info(f"Cargando modelo desde {model_file}")
-        with open(model_file, 'rb') as f:
-            model = pickle.load(f)
-        
-        feature_data = pd.DataFrame({
-            'trip_distance': [trip_distance],
-            'hour': [hour],
-            'weekday': [weekday],
-            'passenger_count': [passenger_count]
-        })
-        
-        logger.info(f"Realizando predicción con parámetros: {feature_data.iloc[0].to_dict()}")
-        
-        prediction = model.predict(feature_data)
-        
-        prediction_value = float(prediction[0])
-        
-        logger.info(f"Predicción realizada: {prediction_value}")
-        
-        return prediction_value
-        
-    except FileNotFoundError:
-        logger.error(f"No se encontró el archivo del modelo: {model_file}")
-        raise
-    except Exception as e:
-        logger.error(f"Error al realizar la predicción: {str(e)}")
-        raise
+    logger.info(f"Cargando modelo desde {model_file}")
+    with open(model_file, 'rb') as f:
+        model = pickle.load(f)
+
+    feature_data = pd.DataFrame({
+        'trip_distance': [trip_distance],
+        'hour': [hour],
+        'weekday': [weekday],
+        'passenger_count': [passenger_count]
+    })
+    
+    logger.info(f"Realizando predicción con parámetros: {feature_data.iloc[0].to_dict()}")
+
+    prediction = model.predict(feature_data)
+    
+    prediction_value = float(prediction[0])
+    
+    logger.info(f"Predicción realizada: {prediction_value}")
+    
+    return prediction_value
