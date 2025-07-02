@@ -9,12 +9,13 @@ COPY requirements.txt .
 COPY train.py .
 # Copia el script de predicción al contenedor
 COPY predict.py .
+COPY default-predict.py .
 # Copia un archivo de muestra para entrenamiento
 COPY sample_train.csv .
 # Copia un archivo de muestra para predicción
 COPY sample_input.csv .
 
-COPY main.py .
+COPY apirest.py .
 
 # Instala las dependencias listadas, sin usar caché para reducir el tamaño final
 RUN pip install --no-cache-dir -r requirements.txt
@@ -22,5 +23,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Comando para ejecutar la API
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "apirest:app", "--host", "0.0.0.0", "--port", "8000"]
 
