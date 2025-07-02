@@ -9,6 +9,7 @@ COPY requirements.txt .
 COPY train.py .
 # Copia el script de predicción al contenedor
 COPY predict.py .
+COPY default-predict.py .
 # Copia un archivo de muestra para entrenamiento
 COPY sample_train.csv .
 # Copia un archivo de muestra para predicción
