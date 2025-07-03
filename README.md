@@ -226,7 +226,102 @@ El script `predict.py` permite generar predicciones desde un archivo CSV de entr
 -   Calcula los mismos features que en entrenamiento.
     
 -   Usa el modelo `.pkl` para hacer predicciones y guarda los resultados en CSV.
+
     
+-----
+# 🚖 FASE 3 - API REST
+
+## 🚀 Descripción
+
+Esta fase del proyecto implementa una **API REST** para el modelo de predicción de tarifas de taxi en Nueva York. La API proporciona endpoints para realizar predicciones individuales y entrenar nuevos modelos, todo desplegado mediante contenedores Docker con FastAPI.
+
+## 📁 Estructura del Directorio
+
+```
+fase-3/
+├── .dockerignore
+├── Dockerfile
+├── apirest.py           # Aplicación principal de la API REST
+├── default-predict.py   # Cliente de ejemplo para llamar a la API
+├── model.pkl           # Modelo entrenado
+├── predict.py          # Script de predicción (compatibilidad)
+├── requirements.txt    # Dependencias para la API
+├── sample_input.csv   # Datos de ejemplo
+└── train.py          # Script de entrenamiento (compatibilidad)
+```
+
+## ⚙️ Requisitos Previos
+- Docker instalado
+- Navegador web
+
+## 🐳 Construcción y Despliegue
+
+1. **Descargar el proyecto desde GitHub**
+
+2. **Abrir con Visual Studio Code**
+
+3. **Entrar en la carpeta fase-3**
+   ```bash
+   cd fase-3
+   ```
+
+4. **Construir la imagen Docker**
+   ```bash
+   docker build -t nyc-taxi-model .
+   ```
+
+5. **Ejecutar el contenedor**
+   ```bash
+   docker run -p 8001:8000 nyc-taxi-model
+   ```
+
+6. **Abrir en el navegador**
+   ```
+   http://localhost:8001/docs
+   ```
+
+## 🛠️ Endpoints Disponibles
+
+### `/predict` (GET)
+Realiza predicciones individuales de tarifa de taxi.
+
+**Parámetros:**
+- `trip_distance`: Distancia en km
+- `hour`: Hora (0-23)
+- `weekday`: Día de la semana (0-6)
+- `passenger_count`: Número de pasajeros
+
+**Ejemplo:**
+```
+http://localhost:8001/predict?trip_distance=1.03&hour=17&weekday=0&passenger_count=1
+```
+
+### `/train` (POST)
+Lanza proceso de entrenamiento con datos estándar.
+
+**Ejemplo:**
+```
+POST http://localhost:8001/train
+```
+
+## 💻 Cliente Programático
+
+El archivo `default-predict.py` ilustra cómo llamar a la API programáticamente:
+
+```bash
+python default-predict.py
+```
+
+## 🧪 Formas de Probar la API
+
+1. **Interfaz web interactiva**: http://localhost:8001/docs
+2. **Comando curl**:
+   ```bash
+   curl "http://localhost:8001/predict?trip_distance=2.5&hour=14&weekday=2&passenger_count=2"
+   ```
+3. **Cliente Python**: Ejecutar `default-predict.py`
+
+
 
 **🙌 Créditos**
 
