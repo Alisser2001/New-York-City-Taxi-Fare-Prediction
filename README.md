@@ -229,25 +229,25 @@ El script `predict.py` permite generar predicciones desde un archivo CSV de entr
 
     
 -----
-# 🚖 FASE 3 - API REST
+## **🚖 FASE 3 - API REST**
 
-## 🚀 Descripción
+**🚀 Descripción**
 
 Esta fase del proyecto implementa una **API REST** para el modelo de predicción de tarifas de taxi en Nueva York. La API proporciona endpoints para realizar predicciones individuales y entrenar nuevos modelos, todo desplegado mediante contenedores Docker con FastAPI.
 
-## 📁 Estructura del Directorio
+**📁 Estructura del Directorio**
 
 ```
 fase-3/
-├── .dockerignore
-├── Dockerfile
-├── apirest.py           # Aplicación principal de la API REST
-├── default-predict.py   # Cliente de ejemplo para llamar a la API
-├── model.pkl           # Modelo entrenado
-├── predict.py          # Script de predicción (compatibilidad)
-├── requirements.txt    # Dependencias para la API
-├── sample_input.csv   # Datos de ejemplo
-└── train.py          # Script de entrenamiento (compatibilidad)
+├── **.dockerignore**
+├── **Dockerfile**
+├── **apirest.py**           # Aplicación principal de la API REST
+├── **default-predict.py**   # Cliente de ejemplo para llamar a la API
+├── **model.pkl**           # Modelo entrenado
+├── **predict.py**          # Script de predicción (compatibilidad)
+├── **requirements.txt**    # Dependencias para la API
+├── **sample_input.csv**   # Datos de ejemplo
+└── **train.py**          # Script de entrenamiento (compatibilidad)
 ```
 
 ## ⚙️ Requisitos Previos
