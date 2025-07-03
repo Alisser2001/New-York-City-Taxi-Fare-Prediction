@@ -237,18 +237,18 @@ Esta fase del proyecto implementa una **API REST** para el modelo de predicción
 
 **📁 Estructura del Directorio**
 
-```
-fase-3/
+**fase-3/**
+
 ├── **.dockerignore**
 ├── **Dockerfile**
-├── **apirest.py**           # Aplicación principal de la API REST
+├── **apirest.py**            # Aplicación principal de la API REST
 ├── **default-predict.py**   # Cliente de ejemplo para llamar a la API
 ├── **model.pkl**           # Modelo entrenado
 ├── **predict.py**          # Script de predicción (compatibilidad)
 ├── **requirements.txt**    # Dependencias para la API
 ├── **sample_input.csv**   # Datos de ejemplo
 └── **train.py**          # Script de entrenamiento (compatibilidad)
-```
+
 
 ## ⚙️ Requisitos Previos
 - Docker instalado
