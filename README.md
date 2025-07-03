@@ -233,7 +233,7 @@ El script `predict.py` permite generar predicciones desde un archivo CSV de entr
 
 **🚀 Descripción**
 
-Esta fase del proyecto implementa una **API REST** para el modelo de predicción de tarifas de taxi en Nueva York. La API proporciona endpoints para realizar predicciones individuales y entrenar nuevos modelos, todo desplegado mediante contenedores Docker con FastAPI.
+Esta fase del proyecto implementa una **API REST** para el modelo de predicción de tarifas de taxi en Nueva York. La API proporciona endpoints para realizar predicciones individuales y predicciones con datos de prueba, todo desplegado mediante contenedores Docker con FastAPI.
 
 **📁 Estructura del Directorio**
 
@@ -245,17 +245,19 @@ Esta fase del proyecto implementa una **API REST** para el modelo de predicción
 
 ├── **apirest.py**            # Aplicación principal de la API REST
 
-├── **default-predict.py**   # Cliente de ejemplo para llamar a la API
+├── **client.py**   # Cliente de ejemplo para llamar a la API
+
+├── **default-predict.py**   # Script de prediccion con datos de prueba
 
 ├── **model.pkl**           # Modelo entrenado
 
-├── **predict.py**          # Script de predicción (compatibilidad)
+├── **predict.py**          # Script de predicción parametrizado
 
 ├── **requirements.txt**    # Dependencias para la API
 
-├── **sample_input.csv**   # Datos de ejemplo
+├── **sample_input.csv**   # Datos de ejemplo para predicciones
 
-└── **train.py**          # Script de entrenamiento (compatibilidad)
+└── **train.py**          # Script de entrenamiento 
 
 
 ## ⚙️ Requisitos Previos
@@ -290,6 +292,22 @@ Esta fase del proyecto implementa una **API REST** para el modelo de predicción
 
 ## 🛠️ Endpoints Disponibles
 
+### `/train` (POST)
+Lanza proceso de entrenamiento con datos estándar.
+
+**Ejemplo:**
+```
+POST http://localhost:8001/train
+```
+
+### `/default_predict` (POST)
+Realiza predicciones de tarifa de taxi con los datos de prueba del proyecto.
+
+**Ejemplo:**
+```
+POST http://localhost:8001/default_predict
+```
+
 ### `/predict` (GET)
 Realiza predicciones individuales de tarifa de taxi.
 
@@ -304,22 +322,6 @@ Realiza predicciones individuales de tarifa de taxi.
 http://localhost:8001/predict?trip_distance=1.03&hour=17&weekday=0&passenger_count=1
 ```
 
-### `/train` (POST)
-Lanza proceso de entrenamiento con datos estándar.
-
-**Ejemplo:**
-```
-POST http://localhost:8001/train
-```
-
-## 💻 Cliente Programático
-
-El archivo `default-predict.py` ilustra cómo llamar a la API programáticamente:
-
-```bash
-python default-predict.py
-```
-
 ## 🧪 Formas de Probar la API
 
 1. **Interfaz web interactiva**: http://localhost:8001/docs
@@ -327,7 +329,7 @@ python default-predict.py
    ```bash
    curl "http://localhost:8001/predict?trip_distance=2.5&hour=14&weekday=2&passenger_count=2"
    ```
-3. **Cliente Python**: Ejecutar `default-predict.py`
+3. **Cliente Python**: Ejecutar `client.py` desde el directorio fase-3
 
 
 
